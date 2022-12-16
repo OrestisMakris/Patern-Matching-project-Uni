@@ -2,13 +2,11 @@ import csv
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn import preprocessing
-from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 from numpy import mean
 from numpy import std
 
 Patient_data = pd.read_csv("Indian Liver Patient Dataset (ILPD).csv" , header=None )
-
 
 Patient_data[1].replace('Male' ,0,inplace=True)
 Patient_data[1].replace('Female' ,1,inplace=True)
@@ -20,12 +18,19 @@ Patient_data[10].replace(2 ,1,inplace=True)
 
 Patient_data=Patient_data.dropna()
 
-#print(Patient_data.to_string())
+print(Patient_data.to_string())
 
 #normalized_arr = preprocessing.normalize(Patient_data)
 
 #scaler = MinMaxScaler(feature_range=(-1, 1))
 #norma = scaler.fit_transform(Patient_data)
+
+Patient_data[0] = np.log(Patient_data[0])
+
+for i in range(2,10):
+   Patient_data[i] = np.log(Patient_data[i])
+
+
 
 Patient_data[0] = 2*((Patient_data[0] - min(Patient_data[0])) / ( max(Patient_data[0]) - min(Patient_data[0]) ))-1
 for i in range(2,10):
@@ -41,7 +46,7 @@ from sklearn.model_selection import train_test_split
 
 # Split dataset into training set and test set
 Patient_data_X_train, Patient_data_X_test, Patient_data_Y_train, Patient_data_Y_test = train_test_split(Patient_data_X, Patient_data_Y, test_size=0.18,random_state=230) # 70% training and 30% test
-#Patient_data_X_train, Patient_data_X_test, Patient_data_Y_train, Patient_data_Y_test = train_test_split(Patient_data_X, Patient_data_Y, test_size=0.3,random_state=235) # 70% training and 30% test
+#Patient_data_X_train, Patient_data_X_test, Patient_data_Y_train, Patient_data_Y_test = train_test_split(Patient_data_X, Patient_data_Y, test_size=0.1,random_state=0) # 70% training and 30% test
 
 from sklearn.naive_bayes import GaussianNB
 classifier = GaussianNB()
@@ -76,3 +81,5 @@ print (ac)
 
 #classifier = GaussianNB()
 #classifier1.fit(Patient_data_X_train, Patient_data_Y_train)
+
+
