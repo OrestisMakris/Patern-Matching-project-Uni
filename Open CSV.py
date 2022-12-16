@@ -71,7 +71,7 @@ print (ac)
 from sklearn.model_selection import KFold
 from sklearn.model_selection import cross_val_score
 
-cv = KFold(n_splits=10, random_state=1, shuffle=True)
+cv = KFold(n_splits=5, random_state=1, shuffle=True)
 
 # evaluate model
 scores = cross_val_score(classifier, Patient_data_X, Patient_data_Y, scoring='accuracy', cv=cv, n_jobs=-1)
