@@ -18,7 +18,7 @@ Patient_data[10].replace(2 ,1,inplace=True)
 
 Patient_data=Patient_data.dropna()
 
-print(Patient_data.to_string())
+#print(Patient_data.to_string())
 
 #normalized_arr = preprocessing.normalize(Patient_data)
 
@@ -36,11 +36,18 @@ Patient_data[0] = 2*((Patient_data[0] - min(Patient_data[0])) / ( max(Patient_da
 for i in range(2,10):
     Patient_data[i] = 2*((Patient_data[i] - min(Patient_data[i])) / ( max(Patient_data[i]) - min(Patient_data[i]) ))-1
 
-print(Patient_data.to_string())
+#print(Patient_data.to_string())
 
 Patient_data_Y = Patient_data.iloc[:,10:]
 Patient_data_X = Patient_data.iloc[:,:-1]
 
+Patient_data_X = Patient_data_X[[0,1,4 ]]
+
+print(Patient_data_X.to_string())
+
+print("----------------------------------------------------")
+
+print(Patient_data_Y)
 
 from sklearn.model_selection import train_test_split
 
