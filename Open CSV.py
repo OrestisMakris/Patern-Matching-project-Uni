@@ -52,7 +52,7 @@ print(Patient_data_Y)
 from sklearn.model_selection import train_test_split
 
 # Split dataset into training set and test set
-Patient_data_X_train, Patient_data_X_test, Patient_data_Y_train, Patient_data_Y_test = train_test_split(Patient_data_X, Patient_data_Y, test_size=0.18,random_state=230) # 70% training and 30% test
+Patient_data_X_train, Patient_data_X_test, Patient_data_Y_train, Patient_data_Y_test = train_test_split(Patient_data_X, Patient_data_Y, test_size=0.2,random_state=218) # 70% training and 30% test
 #Patient_data_X_train, Patient_data_X_test, Patient_data_Y_train, Patient_data_Y_test = train_test_split(Patient_data_X, Patient_data_Y, test_size=0.1,random_state=0) # 70% training and 30% test
 
 from sklearn.naive_bayes import GaussianNB
