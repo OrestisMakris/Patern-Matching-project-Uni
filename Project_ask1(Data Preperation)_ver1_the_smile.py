@@ -140,12 +140,12 @@ print ('The Geometric Mean is: ' + str(geometric_mean))
 
 print(cm)
 
-# Ploting the Confusion matrix 
+# Ploting Confusion matrix 
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=classifier.classes_)
 disp.plot()
 plt.show()
 
-
+#implementing the naïve bayes algorithm using the 5-fold cross validation technique Erotima 3 
 
 #K-Folds cross-validator Pprovides train/test indices to split data in train/test sets. Split dataset into k consecutive folds 
 cv = KFold(n_splits=5, random_state=1, shuffle=True)
@@ -156,43 +156,63 @@ scores = cross_val_score(classifier, Patient_data_X, Patient_data_Y, scoring='ac
 #Show accuracy for each fold performance
 print(scores)
 
+
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
+
+#After using the heatmap to 
 
 Patient_data_X_rd = Patient_data_X[[0,1,4]]
-#Patient_data_X_rd = Patient_data_X[[0,1]]
+
+# Split dataset into training set and test set
 Patient_data_X_train_rd, Patient_data_X_test_rd, Patient_data_Y_train_rd, Patient_data_Y_test_rd = train_test_split(Patient_data_X_rd, Patient_data_Y, test_size=0.2,random_state=218)
 
+# Using GaussianNB() classifier from scikit-learn library 
+#in order to implement the Gaussian Naïve Bayes algorithm for classification for reduced dependency data.
 classifier_reduced_dependency =  GaussianNB()
+
+#The fit method from scikit-learn library trains the algorithm on the training data, after the model is initialized.
 classifier_reduced_dependency.fit(Patient_data_X_train_rd, Patient_data_Y_train_rd)
 
+# the Predict Method from scikit-learn library given a trained model, it predicts the label of a new set of data.
 y_pred_rd = classifier_reduced_dependency.predict(Patient_data_X_test_rd)
 
+# The accuracy_score method from scikit-learn is a function that computes subset accuracy: the set of labels predicted 
+# for a sample must exactly match the corresponding set of labels in Patient_data_Y_test
 ac_rd = accuracy_score(Patient_data_Y_test_rd ,y_pred_rd)
+
+# Computes the geometric mean from the sensitivity and specificity of the algorithm NB with reduced dpendancie data 
 cm_rd = confusion_matrix(Patient_data_Y_test_rd, y_pred_rd)
 
 print (ac_rd)
 print(cm_rd)
 
+# Computes the sensitivity of the algorithm from the confusion matrix
 sensitivity_rd = cm_rd[0,0]/(cm_rd[0,0]+cm_rd[0,1])
 print('Sensitivity : ', sensitivity_rd )
 
+# Computes the Specificity of the algorithm from the confusion matrix
 specificity_rd = cm_rd[1,1]/(cm_rd[1,0]+cm_rd[1,1])
 print('Specificity : ', specificity_rd)
 
+# Computes the geometric mean from the sensitivity and specificity of the algorithm
 geometric_mean_rd = (sensitivity_rd*specificity_rd)**(1/2)
 print ('The Geometric Mean is: ' + str(geometric_mean_rd))
 
+# Ploting Confusion matrix 
 disp_rd = ConfusionMatrixDisplay(confusion_matrix=cm_rd, display_labels=classifier_reduced_dependency.classes_)
 disp_rd.plot()
 plt.show()
 
+#implementing the naïve bayes algorithm using the 5-fold cross validation technique Erotima 3 
 
+#K-Folds cross-validator Pprovides train/test indices to split data in train/test sets. Split dataset into k consecutive folds 
 cv_rd = KFold(n_splits=5, random_state=1, shuffle=True)
 
-# evaluate model
+#cross_val_score is a function in the scikit-learn package which trains and tests a model over multiple folds of your dataset
 scores_rd = cross_val_score(classifier_reduced_dependency, Patient_data_X_rd, Patient_data_Y, scoring='accuracy', cv=cv, n_jobs=-1)
-# report performance
+
+#Show accuracy for each fold performance
 print(scores_rd)
