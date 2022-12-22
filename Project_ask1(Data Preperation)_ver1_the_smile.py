@@ -162,8 +162,10 @@ print(scores)
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 
-#After using the heatmap to 
+#After using the heatmap to determine the dependency between the feature of the data set we retrain the classifier 
+#This new nb classifier is caled reducced_depentancy 
 
+#Creating a new traininig data set using the feuterus colnmbs with thee least corealatio nith the other feuterus  
 Patient_data_X_rd = Patient_data_X[[0,1,4]]
 
 # Split dataset into training set and test set
