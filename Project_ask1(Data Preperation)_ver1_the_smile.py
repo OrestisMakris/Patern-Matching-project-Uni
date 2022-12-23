@@ -139,12 +139,6 @@ geometric_mean = (sensitivity*specificity)**(1/2)
 print ('The Geometric Mean is: ' + str(geometric_mean))
 
 print(cm)
-
-# Ploting Confusion matrix 
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=classifier.classes_)
-disp.plot()
-plt.show()
-
 #implementing the naïve bayes algorithm using the 5-fold cross validation technique Erotima 3 
 
 #K-Folds cross-validator Pprovides train/test indices to split data in train/test sets. Split dataset into k consecutive folds 
@@ -162,10 +156,12 @@ print(scores)
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 
-#After using the heatmap to determine the dependency between the feature of the data set we retrain the classifier 
-#This new nb classifier is caled reducced_depentancy 
 
-#Creating a new traininig data set using the feuterus colnmbs with thee least corealatio nith the other feuterus  
+#After using the heatmap to determine the dependency between the feature of the data set we retrain the classifier 
+#This new naive bayes classifier is called reduced_dependency (rd) and all new variables are called rd_previous_name 
+
+
+#Creating a new training data set using the features (ccolumns) with the least correlation with the other features  
 Patient_data_X_rd = Patient_data_X[[0,1,4]]
 
 # Split dataset into training set and test set
