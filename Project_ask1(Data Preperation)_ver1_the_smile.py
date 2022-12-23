@@ -104,7 +104,8 @@ Patient_data_Y = Patient_data.iloc[:,10:]
 Patient_data_X = Patient_data.iloc[:,:-1]
 
 # Split dataset into training set and test set
-Patient_data_X_train, Patient_data_X_test, Patient_data_Y_train, Patient_data_Y_test = train_test_split(Patient_data_X, Patient_data_Y, test_size=0.2,random_state=210) # 80% training and 20% test
+# 80% training and 20% test
+Patient_data_X_train, Patient_data_X_test, Patient_data_Y_train, Patient_data_Y_test = train_test_split(Patient_data_X, Patient_data_Y, test_size=0.2,random_state=210)
 
 #Begin the process of implementing Naive Bayes Classifier Erotima 2. 
 
