@@ -67,7 +67,7 @@ Patient_data[0] = np.log(Patient_data[0])
 #The log() numpy method a mathematical function that calculates natural logarithm of each element of the array 
 #for the remaining features expect the gender.
 for i in range(2,10):
-   Patient_data[i] = np.log(Patient_data[i])
+ Patient_data[i] = np.log(Patient_data[i])
 
 
 #Using the seaborn and matplotlib libraries we plot 10 histograms one per column (features)
@@ -126,7 +126,7 @@ ac = accuracy_score(Patient_data_Y_test ,y_pred)
 # The Predict Method from scikit-learn library given a trained model, it predicts the label of a new set of data.
 cm = confusion_matrix(Patient_data_Y_test , y_pred)
 
-print (ac)
+print('Accuracy : ' , ac)
 
 # Computes the sensitivity of the algorithm from the confusion matrix
 sensitivity = cm[0,0]/(cm[0,0]+cm[0,1])
@@ -140,9 +140,14 @@ print('Specificity : ', specificity)
 geometric_mean = (sensitivity*specificity)**(1/2)
 print ('The Geometric Mean is: ' + str(geometric_mean))
 
-print(cm)
-#implementing the naïve bayes algorithm using the 5-fold cross validation technique Erotima 3 
+print('Confusion Matrix :' , cm)
 
+# Ploting Confusion matrix 
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=classifier.classes_)
+disp.plot()
+plt.show()
+
+#implementing the naïve bayes algorithm using the 5-fold cross validation technique Erotima 3 
 #K-Folds cross-validator Pprovides train/test indices to split data in train/test sets. Split dataset into k consecutive folds 
 cv = KFold(n_splits=5, random_state=1, shuffle=True)
 
@@ -150,8 +155,9 @@ cv = KFold(n_splits=5, random_state=1, shuffle=True)
 scores = cross_val_score(classifier, Patient_data_X, Patient_data_Y, scoring='accuracy', cv=cv, n_jobs=-1)
 
 #Show accuracy for each fold performance
-print(scores)
+print('All folds Scores ',scores)
 
+print('Average of all Folds Scores' ,np.average(scores))
 
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
@@ -186,20 +192,21 @@ ac_rd = accuracy_score(Patient_data_Y_test_rd ,y_pred_rd)
 # Computes the geometric mean from the sensitivity and specificity of the algorithm NB with reduced dpendancie data 
 cm_rd = confusion_matrix(Patient_data_Y_test_rd, y_pred_rd)
 
-print (ac_rd)
-print(cm_rd)
+
+print ('Reduced Dependency Accuracy : ' , ac_rd)
+print('Reduced Dependency Confusion Matrix :' , cm_rd)
 
 # Computes the sensitivity of the algorithm from the confusion matrix
 sensitivity_rd = cm_rd[0,0]/(cm_rd[0,0]+cm_rd[0,1])
-print('Sensitivity : ', sensitivity_rd )
+print('Reduced Dependency Sensitivity : ', sensitivity_rd )
 
 # Computes the Specificity of the algorithm from the confusion matrix
 specificity_rd = cm_rd[1,1]/(cm_rd[1,0]+cm_rd[1,1])
-print('Specificity : ', specificity_rd)
+print('Reduced Dependency Specificity : ', specificity_rd)
 
 # Computes the geometric mean from the sensitivity and specificity of the algorithm
 geometric_mean_rd = (sensitivity_rd*specificity_rd)**(1/2)
-print ('The Geometric Mean is: ' + str(geometric_mean_rd))
+print ('Reduced Dependency Geometric Mean is: ' + str(geometric_mean_rd))
 
 # Ploting Confusion matrix 
 disp_rd = ConfusionMatrixDisplay(confusion_matrix=cm_rd, display_labels=classifier_reduced_dependency.classes_)
@@ -215,4 +222,5 @@ cv_rd = KFold(n_splits=5, random_state=1, shuffle=True)
 scores_rd = cross_val_score(classifier_reduced_dependency, Patient_data_X_rd, Patient_data_Y, scoring='accuracy', cv=cv, n_jobs=-1)
 
 #Show accuracy for each fold performance
-print(scores_rd)
+print('Reduced Dependency all folds Scores ' , scores_rd)
+print('Reduced Dependency Average of all Folds Scores ' , np.average(scores_rd))
