@@ -99,7 +99,7 @@ for i in range(2,10):
 
 
 #separate the data in two pandas data frames Patient_data_Y contains the class data 
-#and Patient_data_X Y contains the features data
+#and Patient_data_X contains the features data
 Patient_data_Y = Patient_data.iloc[:,10:]
 Patient_data_X = Patient_data.iloc[:,:-1]
 
