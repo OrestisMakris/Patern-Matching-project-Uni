@@ -15,6 +15,7 @@ from sklearn.metrics import confusion_matrix,accuracy_score , ConfusionMatrixDis
 #skit_learn library from model_selection package importing cross_val_score in order to use the k-fold cross validation method to evaluate our model with multiple folds. 
 from sklearn.model_selection import cross_val_score , KFold
 
+#-------------------------------------------------------- Data Preprocessing Erotima 1 ------------------------------------------------------------------------
 
 #Importing Project data from csv using the Pandas dataframe
 Patient_data = pd.read_csv("Indian Liver Patient Dataset (ILPD).csv" , header=None )
@@ -47,7 +48,7 @@ plt.show()
 #Using the seaborn and matplotlib libraries we plot 10 histograms one per column (features) of the data array.
 fig,axes = plt.subplots(1 ,10 ,figsize=(60,15),sharey=True)
 sns.histplot(Patient_data , ax =axes[0] , x=0 , kde=True , color = '#a1c9f4').set(title='Age')
-sns.histplot(Patient_data , ax =axes[1] , x=1, kde=True , color = '#8de5a1').set(title='Gende')
+sns.histplot(Patient_data , ax =axes[1] , x=1, kde=True , color = '#8de5a1').set(title='Gender')
 sns.histplot(Patient_data , ax =axes[2] , x=2 , kde=True , color =  '#B0171F').set(title='TB')
 sns.histplot(Patient_data , ax =axes[3] , x=3 , kde=True, color = '#d0bbff' ).set(title='DB')
 sns.histplot(Patient_data , ax =axes[4] , x=4 , kde=True , color = '#D02090').set(title='Alkphos Alkaline Phosphotase')
@@ -73,7 +74,7 @@ for i in range(2,10):
 #of the data array in order to see the result of the logarithmic process of the data.
 fig,axes = plt.subplots(1 ,10 ,figsize=(60,15),sharey=True)
 sns.histplot(Patient_data , ax =axes[0] , x=0 , kde=True , color = '#a1c9f4').set(title='Age')
-sns.histplot(Patient_data , ax =axes[1] , x=1, kde=True , color = '#8de5a1').set(title='Gende')
+sns.histplot(Patient_data , ax =axes[1] , x=1, kde=True , color = '#8de5a1').set(title='Gender')
 sns.histplot(Patient_data , ax =axes[2] , x=2 , kde=True , color =  '#B0171F').set(title='TB')
 sns.histplot(Patient_data , ax =axes[3] , x=3 , kde=True, color = '#d0bbff' ).set(title='DB')
 sns.histplot(Patient_data , ax =axes[4] , x=4 , kde=True , color = '#D02090').set(title='Alkphos Alkaline Phosphotase')
