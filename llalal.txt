@@ -1,0 +1,271 @@
+C =1
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7116341829085457
+
+C = 6 
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6977661169415292
+
+C=11
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7011694152923538
+
+C = 16 
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6994302848575712
+
+C = 21 
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6925187406296851
+
+C = 26 
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6925487256371815
+
+C = 31
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.694287856071964
+
+C = 36
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6942878560719641
+
+C = 41 
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.687376311844078
+
+C = 46 
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6891004497751124
+
+C = 61 
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6908545727136433
+
+C = 76
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6856671664167917
+
+C = 91
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6787856071964018
+
+C = 101
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6736131934032983
+
+C = 106
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6701799100449776
+
+C = 111
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6736281859070464
+
+C = 116
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6719040479760121
+
+C = 136
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6753373313343329
+
+C = 156 
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6701649175412294
+
+C = 171 
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6735832083958021
+
+C = 186
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6753073463268365
+
+C = 191
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6787556221889056
+
+c = 196 
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6787556221889056
+
+C = 200
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.6787556221889056
+
+Gamma
+
+r = 0
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7150674662668666
+
+r = 0.5
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7150824587706147
+
+r = 1
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7168065967016493
+
+r = 1.5
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7064167916041979
+
+r = 2
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7046626686656672
+
+r = 2.5
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7046926536731635
+
+r = 3
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.708110944527736
+
+r = 3.5
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7081259370314842
+
+r = 4
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7132983508245878
+
+r = 4.5
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7081259370314842
+
+r = 5
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7098500749625187
+
+r = 5.5
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7132983508245877
+
+r = 6
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7184707646176911
+
+r = 6.5
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7132983508245878
+
+r = 7
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7202098950524738
+
+r = 7.5
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7184707646176911
+
+r = 8
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7167316341829085
+
+r = 8.5
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7201799100449775
+
+r = 9
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7236281859070465
+
+r = 9.5
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7271064467766116
+
+r = 10
+
+SVM Geometric Mean is: 0.41521339001080454
+SVM Average of all Folds Scores  0.7236581709145428
+
+N=3 
+KN Geometric Mean is: 0.7325198740332296
+KN Average of all Folds Scores  0.6908845577211393
+N=4 
+KN Geometric Mean is: 0.5756912132621617
+KN Average of all Folds Scores  0.7150824587706147
+N=5
+KN Geometric Mean is: 0.7364266744027402
+KN Average of all Folds Scores  0.701304347826087
+N=6
+KN Geometric Mean is: 0.5794174088823406
+KN Average of all Folds Scores  0.7220089955022488
+N=7
+KN Geometric Mean is: 0.7004814904820048
+KN Average of all Folds Scores  0.7064467766116941
+N=8
+KN Geometric Mean is: 0.6095839068207152
+KN Average of all Folds Scores  0.725472263868066
+N=9
+KN Geometric Mean is: 0.6912031802891925
+KN Average of all Folds Scores  0.7271814092953524
+N=10 
+KN Geometric Mean is: 0.643642343451761
+KN Average of all Folds Scores  0.7237181409295352
+
+N=11
+KN Geometric Mean is: 0.6671746032482893
+KN Average of all Folds Scores  0.7116341829085457
+N=12
+KN Geometric Mean is: 0.5952947981463835
+KN Average of all Folds Scores  0.7237181409295352
+N= 13
+KN Geometric Mean is: 0.6807456457050177
+KN Average of all Folds Scores  0.7150674662668666
+N=14
+KN Geometric Mean is: 0.5547499339698908
+KN Average of all Folds Scores  0.7168065967016493
+N=15
+KN Geometric Mean is: 0.6136888953356168
+KN Average of all Folds Scores  0.704647676161919
+
+
+
+
