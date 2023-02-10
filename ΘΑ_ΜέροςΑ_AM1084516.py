@@ -241,47 +241,47 @@ print('Reduced Dependency Average of all Folds Scores ' , np.average(scores_rd))
 
 
 gammas = [0 , 0.5 , 1, 1.5, 2 , 2.5, 3 , 3.5, 4 , 4.5 , 5 , 5.5 , 6 , 6.5 , 7 , 7.5 , 8 ,8.5 , 9 ,9.5 , 10 ]
-for r in gammas :
+#for r in gammas :
  #print(r)
- svmclassifier = SVC(kernel='rbf' , C = 1 , gamma =  10)
- svmclassifier.fit(Patient_data_X , Patient_data_Y)
- y_predict_svm = svmclassifier.predict(Patient_data_X_test)
+svmclassifier = SVC(kernel='rbf' , C = 1 , gamma =  10)
+svmclassifier.fit(Patient_data_X , Patient_data_Y)
+y_predict_svm = svmclassifier.predict(Patient_data_X_test)
 
- ac_svm = accuracy_score(Patient_data_Y_test ,y_predict_svm)
+ac_svm = accuracy_score(Patient_data_Y_test ,y_predict_svm)
 
- cm_svm = confusion_matrix(Patient_data_Y_test, y_predict_svm)
+cm_svm = confusion_matrix(Patient_data_Y_test, y_predict_svm)
 
-#print ('SVM Accuracy : ' , ac_svm)
-#print('SVM Confusion Matrix :' , cm_svm)
+print ('SVM Accuracy : ' , ac_svm)
+print('SVM Confusion Matrix :' , cm_svm)
 
- sensitivity_svm = cm_svm[0,0]/(cm_svm[0,0] + cm_svm[0,1])
-#print('SVM Sensitivity : ', sensitivity_svm )
+sensitivity_svm = cm_svm[0,0]/(cm_svm[0,0] + cm_svm[0,1])
+print('SVM Sensitivity : ', sensitivity_svm )
 
- specificity_svm = cm_svm[1,1]/(cm_svm[1,0] + cm_svm[1,1])
-#print('SVM Specificity : ', specificity_svm)
+specificity_svm = cm_svm[1,1]/(cm_svm[1,0] + cm_svm[1,1])
+print('SVM Specificity : ', specificity_svm)
 
 # Computes the geometric mean from the sensitivity and specificity of the algorithm
- geometric_mean_svm = (sensitivity_svm * specificity_svm)**(1/2)
- print ('SVM Geometric Mean is: ' + str(geometric_mean_rd))
+geometric_mean_svm = (sensitivity_svm * specificity_svm)**(1/2)
+print ('SVM Geometric Mean is: ' + str(geometric_mean_rd))
 
 # Ploting Confusion matrix 
 #disp_svm = ConfusionMatrixDisplay(confusion_matrix=cm_svm, display_labels=svmclassifier.classes_)
 #disp_svm.plot()
 #plt.show()
 
- cv_svm = KFold(n_splits=5, random_state=1, shuffle=True)
+cv_svm = KFold(n_splits=5, random_state=1, shuffle=True)
 
- scores_svm = cross_val_score(svmclassifier, Patient_data_X, Patient_data_Y.values.ravel(), scoring='accuracy', cv=cv, n_jobs=-1)
+scores_svm = cross_val_score(svmclassifier, Patient_data_X, Patient_data_Y.values.ravel(), scoring='accuracy', cv=cv, n_jobs=-1)
 
 #Show accuracy for each fold performance
 #print('SVM all folds Scores ' , scores_svm)
- print('SVM Average of all Folds Scores ' , np.average(scores_svm))
- print('||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||')
+print('SVM Average of all Folds Scores ' , np.average(scores_svm))
+print('||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||')
 
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 
-KNeighborsClassifier = KNeighborsClassifier(n_neighbors= 8)
+KNeighborsClassifier = KNeighborsClassifier(n_neighbors= 14)
 KNeighborsClassifier.fit(Patient_data_X , Patient_data_Y)
 y_predict_KN = KNeighborsClassifier.predict(Patient_data_X_test)
 
@@ -289,28 +289,28 @@ ac_KN = accuracy_score(Patient_data_Y_test ,y_predict_KN)
 
 cm_KN = confusion_matrix(Patient_data_Y_test, y_predict_KN)
 
-#print ('KN Accuracy : ' , ac_KN)
-#print('KN Confusion Matrix :' , cm_KN)
+print ('KN Accuracy : ' , ac_KN)
+print('KN Confusion Matrix :' , cm_KN)
 
 sensitivity_KN = cm_KN[0,0]/(cm_KN[0,0] + cm_KN[0,1])
-#print('KN Sensitivity : ', sensitivity_KN )
+print('KN Sensitivity : ', sensitivity_KN )
 
 specificity_KN = cm_KN[1,1]/(cm_KN[1,0] + cm_KN[1,1])
-#print('KN Specificity : ', specificity_KN)
+print('KN Specificity : ', specificity_KN)
 
-# Computes the geometric mean from the sensitivity and specificity of the algorithm
+#Computes the geometric mean from the sensitivity and specificity of the algorithm
 geometric_mean_KN = (sensitivity_KN * specificity_KN)**(1/2)
 print ('KN Geometric Mean is: ' + str(geometric_mean_KN))
 
 # Ploting Confusion matrix 
 disp_KN = ConfusionMatrixDisplay(confusion_matrix=cm_KN, display_labels= KNeighborsClassifier.classes_)
 disp_KN.plot()
-#plt.show()
+plt.show()
 
 cv_KN = KFold(n_splits=5, random_state=1, shuffle=True)
 
 scores_KN = cross_val_score(KNeighborsClassifier, Patient_data_X, Patient_data_Y .values.ravel(), scoring='accuracy', cv=cv, n_jobs=-1)
 
 #Show accuracy for each fold performance
-#print('KN all folds Scores ' , scores_KN)
+print('KN all folds Scores ' , scores_KN)
 print('KN Average of all Folds Scores ' , np.average(scores_KN))
