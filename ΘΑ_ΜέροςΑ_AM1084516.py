@@ -15,9 +15,14 @@ from sklearn.metrics import confusion_matrix,accuracy_score , ConfusionMatrixDis
 #skit_learn library from model_selection package importing cross_val_score in order to use the k-fold cross validation method to evaluate our model with multiple folds. 
 from sklearn.model_selection import cross_val_score , KFold
 #we import the SVM classifier from sklearn.svm library
-from sklearn.svm import SVC\
+from sklearn.svm import SVC
 #we import the KNN classifier from sklearn.neighbors library
 from sklearn.neighbors import KNeighborsClassifier
+
+from scipy.stats import sem
+
+from scipy.stats import t
+
 
 
 #-------------------------------------------------------- Data Preprocessing Erotima 1 ------------------------------------------------------------------------
@@ -47,7 +52,7 @@ print(Patient_data[10].value_counts())
 #Using hist method from Pandas dataframe to display a histogram a representation of the distribution of data 
 #for the last column of the data array which contains the classes.
 Patient_data[10].hist(color = "darkCyan")
-plt.show()
+#plt.show()
 
 
 #Using the seaborn and matplotlib libraries we plot 10 histograms one per column (features) of the data array.
@@ -62,7 +67,7 @@ sns.histplot(Patient_data , ax =axes[6] , x=6 , kde=True, color = '#00688B').set
 sns.histplot(Patient_data , ax =axes[7] , x=7 , kde=True , color = '#EE7600').set(title='TP')
 sns.histplot(Patient_data , ax =axes[8] , x=8 , kde=True, color = '#8E388E').set(title='ALB')
 sns.histplot(Patient_data , ax =axes[9] , x=9 , kde=True , color = '#CD2626') .set(title='A/G')
-plt.show()
+#plt.show()
 
 
 #The log() numpy method a mathematical function that calculates natural logarithm of echa allmento 
@@ -88,13 +93,13 @@ sns.histplot(Patient_data , ax =axes[6] , x=6 , kde=True, color = '#00688B').set
 sns.histplot(Patient_data , ax =axes[7] , x=7 , kde=True , color = '#EE7600').set(title='TP')
 sns.histplot(Patient_data , ax =axes[8] , x=8 , kde=True, color = '#8E388E').set(title='ALB')
 sns.histplot(Patient_data , ax =axes[9] , x=9 , kde=True , color = '#CD2626') .set(title='A/G')
-plt.show()
+#plt.show()
 
 #using seaborn heatmap method in order to plot the heatmap of the features in order to see the dependency of each feature with the another.
 corr = Patient_data.iloc[:,:-1].corr(method='pearson')
 cmap = sns.diverging_palette(220, 20, sep=20, as_cmap=True)
 sns.heatmap(corr , vmax =1 , vmin =.3 , cmap=cmap ,  annot=True,square =True , linewidths = .2)
-plt.show()
+#plt.show()
 
 
 #Normalise the data of each feature between -1 and 1 expect the gender (column with index 1)
@@ -108,6 +113,7 @@ for i in range(2,10):
 Patient_data_Y = Patient_data.iloc[:,10:]
 Patient_data_X = Patient_data.iloc[:,:-1]
 
+
 # Split dataset into training set and test set
 # 80% training and 20% test
 Patient_data_X_train, Patient_data_X_test, Patient_data_Y_train, Patient_data_Y_test = train_test_split(Patient_data_X, Patient_data_Y, test_size=0.2,random_state=210)
@@ -116,6 +122,7 @@ Patient_data_X_train, Patient_data_X_test, Patient_data_Y_train, Patient_data_Y_
 
 # Using GaussianNB() classifier from scikit-learn library 
 #in order to implement the Gaussian Naïve Bayes algorithm for classification.
+
 classifier = GaussianNB()
 
 # The fit method from scikit-learn library trains the algorithm on the training data, after the model is initialized.
@@ -154,7 +161,7 @@ plt.show()
 
 #implementing the naïve bayes algorithm using the 5-fold cross validation technique Erotima 3 
 #K-Folds cross-validator Pprovides train/test indices to split data in train/test sets. Split dataset into k consecutive folds 
-cv = KFold(n_splits=5, random_state=1, shuffle=True)
+cv = KFold(n_splits=10, random_state=1, shuffle=True)
 
 #cross_val_score is a function in the scikit-learn package which trains and tests a model over multiple folds of your dataset
 scores = cross_val_score(classifier, Patient_data_X, Patient_data_Y.values.ravel(), scoring='accuracy', cv=cv, n_jobs=-1)
@@ -216,12 +223,12 @@ print ('Reduced Dependency Geometric Mean is: ' + str(geometric_mean_rd))
 # Ploting Confusion matrix 
 disp_rd = ConfusionMatrixDisplay(confusion_matrix=cm_rd, display_labels=classifier_reduced_dependency.classes_)
 disp_rd.plot()
-#plt.show()
+plt.show()
 
 #implementing the naïve bayes algorithm using the 5-fold cross validation technique Erotima 3 
 
 #K-Folds cross-validator Pprovides train/test indices to split data in train/test sets. Split dataset into k consecutive folds 
-cv_rd = KFold(n_splits=5, random_state=1, shuffle=True)
+cv_rd = KFold(n_splits=10, random_state=1, shuffle=True)
 
 #cross_val_score is a function in the scikit-learn package which trains and tests a model over multiple folds of your dataset
 scores_rd = cross_val_score(classifier_reduced_dependency, Patient_data_X_rd, Patient_data_Y.values.ravel(), scoring='accuracy', cv=cv, n_jobs=-1)
@@ -238,14 +245,15 @@ print('Reduced Dependency Average of all Folds Scores ' , np.average(scores_rd))
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 
 # parameter tuning Erotima 4
-#gammas = [0 , 0.5 , 1, 1.5, 2 , 2.5, 3 , 3.5, 4 , 4.5 , 5 , 5.5 , 6 , 6.5 , 7 , 7.5 , 8 ,8.5 , 9 ,9.5 , 10 ]
-#for r in gammas :
- #print(r)
 
-# we define the classifier to be SVC with parameters kernel = rbf, C = 1 and gamma = 9.5 
-svmclassifier = SVC(kernel='rbf' , C = 1 , gamma = 9.5)
-# we define the classifier to be SVC with parameters kernel = rbf, C = 1 and gamma = 9.5
-svmclassifier.fit(Patient_data_X , Patient_data_Y)
+#gammas = [0 , 0.5 , 1, 1.5, 2 , 2.5, 3 , 3.5, 4 , 4.5 , 5 , 5.5 , 6 , 6.5 , 7 , 7.5 , 8 ,8.5 , 9 ,9.5 , 10 ]
+#for c in gammas: 
+#print( 'C = ' , c)
+
+# we define the classifier to be SVC with parameters kernel = rbf, C = 5 and gamma = 0.5 
+svmclassifier = SVC(kernel='rbf' , C = 5 , gamma = 0.5)
+# we define the classifier to be SVC with parameters kernel = rbf, C = 5 and gamma = 0.5 
+svmclassifier.fit(Patient_data_X_train , Patient_data_Y_train)
 # we fit the data to the classifier
 y_predict_svm = svmclassifier.predict(Patient_data_X_test)
 
@@ -271,7 +279,7 @@ print('SVM Specificity : ', specificity_svm)
 
 # Computes the geometric mean from the sensitivity and specificity of the algorithm
 geometric_mean_svm = (sensitivity_svm * specificity_svm)**(1/2)
-print ('SVM Geometric Mean is: ' + str(geometric_mean_rd))
+print ('SVM Geometric Mean is: ' + str(geometric_mean_svm))
 
 #Ploting Confusion matrix 
 disp_svm = ConfusionMatrixDisplay(confusion_matrix=cm_svm, display_labels=svmclassifier.classes_)
@@ -283,20 +291,22 @@ cv_svm = KFold(n_splits=5, random_state=1, shuffle=True)
 
 #cross_val_score is a function in the scikit-learn package which trains and tests a model over multiple folds of your dataset
 scores_svm = cross_val_score(svmclassifier, Patient_data_X, Patient_data_Y.values.ravel(), scoring='accuracy', cv=cv, n_jobs=-1)
-
+     
 #Show accuracy for each fold performance
 print('SVM all folds Scores ' , scores_svm)
 print('SVM Average of all Folds Scores ' , np.average(scores_svm))
 print('||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||')
+    
+
 
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 #||-------------------------------------------------------------------------------- k - Neighbors -----------------------------------------------------------------------------------------||
 #||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 
 # we define the classifier to be KNeighborsClassifier with parameters n_neighbors = 14
-KNeighborsClassifier = KNeighborsClassifier(n_neighbors= 14)
+KNeighborsClassifier = KNeighborsClassifier(n_neighbors= 12)
 #KNeighborsClassifier is trained with the training data
-KNeighborsClassifier.fit(Patient_data_X , Patient_data_Y)
+KNeighborsClassifier.fit(Patient_data_X_train , Patient_data_Y_train)
 #KNeighborsClassifier is used to predict the class labels for the test data
 y_predict_KN = KNeighborsClassifier.predict(Patient_data_X_test)
 
@@ -320,6 +330,7 @@ print('KN Specificity : ', specificity_KN)
 
 #Computes the geometric mean from the sensitivity and specificity of the algorithm
 geometric_mean_KN = (sensitivity_KN * specificity_KN)**(1/2)
+print('-----------------------------\n')
 print ('KN Geometric Mean is: ' + str(geometric_mean_KN))
 
 # Ploting Confusion matrix 
@@ -336,3 +347,89 @@ scores_KN = cross_val_score(KNeighborsClassifier, Patient_data_X, Patient_data_Y
 #Show accuracy for each fold performance
 print('KN all folds Scores ' , scores_KN)
 print('KN Average of all Folds Scores ' , np.average(scores_KN))
+
+
+#||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
+#||-------------------------------------------------------------------------------- Feature Selection using T-test ------------------------------------------------------------------------||
+#||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
+
+def t_test (val1 ,val2):
+
+ # calculate means
+ mean1, mean2 = np.mean(val1), np.mean(val2)
+
+  # calculate standard errors
+ se1, se2 = sem(val1), sem(val2)
+
+ # standard error on the difference between the samples
+ sed = np.sqrt(se1**2.0 + se2**2.0)
+
+  # calculate the t statistic
+ t_stat = (mean1 - mean2) / sed
+
+ # degrees of freedom
+ df = len(val1) + len(val2) - 2
+
+ # calculate the p-value
+ p = (1.0 - t.cdf(abs(t_stat), df)) * 2.0
+ return t_stat, p
+
+for i in range(0, 10):
+    t_stat, p =t_test(Patient_data[i] ,Patient_data[10])
+    print('T Value is t=%f, P Value is p=%f' % (t_stat, p))
+
+
+Patient_data_X_t_test= Patient_data_X.iloc[:,  [ 1, 7, 8]].copy()
+Patient_data_X_train_t_test, Patient_data_X_test_t_test, Patient_data_Y_train_t_test, Patient_data_Y_test_t_test = train_test_split(Patient_data_X_t_test, Patient_data_Y, test_size=0.2,random_state=210)
+
+#||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
+#||-------------------------------------------------------------------------------- Retrain Best Model From Previous Section --------------------------------------------------------------||
+#||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
+
+# we define the classifier to be SVC with parameters kernel = rbf, C = 5 and gamma = 0.5 
+svmclassifier = SVC(kernel='rbf' , C = 5 , gamma = 0.5)
+# we define the classifier to be SVC with parameters kernel = rbf, C = 5 and gamma = 0.5 
+svmclassifier.fit(Patient_data_X_train_t_test ,Patient_data_Y_train_t_test)
+# we fit the data to the classifier
+y_predict_svm_t = svmclassifier.predict(Patient_data_X_test_t_test)
+
+ac_svm_t = accuracy_score(Patient_data_Y_test_t_test ,y_predict_svm_t)
+
+cm_svm_t = confusion_matrix(Patient_data_Y_test_t_test, y_predict_svm_t)
+
+
+# The accuracy_score method from scikit-learn is a function that computes subset accuracy: the set of labels predicted 
+# for a sample must exactly match the corresponding set of labels in Patient_data_Y_test_t_test
+print ('SVM T-test Accuracy : ' , ac_svm_t)
+
+# Computes the geometric mean from the sensitivity and specificity of the algorithm SVM with reduced dpendancie data 
+print('SVM T-test Confusion Matrix :' , cm_svm_t)
+
+# Computes the sensitivity of the algorithm from the confusion matrix
+sensitivity_svm_t = cm_svm_t[0,0]/(cm_svm_t[0,0] + cm_svm_t[0,1])
+print('SVM  T-testSensitivity : ', sensitivity_svm_t )
+
+# Computes the Specificity of the algorithm from the confusion matrix
+specificity_svm_t = cm_svm_t[1,1]/(cm_svm_t[1,0] + cm_svm_t[1,1])
+print('SVM T-test Specificity : ', specificity_svm_t)
+
+# Computes the geometric mean from the sensitivity and specificity of the algorithm
+geometric_mean_svm_t = (sensitivity_svm_t * specificity_svm_t)**(1/2)
+print ('SVM T-test Geometric Mean is: ' + str(geometric_mean_svm_t))
+
+#Ploting Confusion matrix 
+disp_svm_t = ConfusionMatrixDisplay(confusion_matrix=cm_svm_t, display_labels=svmclassifier.classes_)
+disp_svm_t.plot()
+plt.show()
+
+#K-Folds cross-validator Pprovides train/test indices to split data in train/test sets. Split dataset into k consecutive folds 
+cv_svm_t = KFold(n_splits=5, random_state=1, shuffle=True)
+
+#cross_val_score is a function in the scikit-learn package which trains and tests a model over multiple folds of your dataset
+scores_svm_t = cross_val_score(svmclassifier, Patient_data_X_t_test, Patient_data_Y.values.ravel(), scoring='accuracy', cv=cv, n_jobs=-1)
+
+#Show accuracy for each fold performance
+print('SVM T-test all folds Scores ' , scores_svm_t)
+print('SVM T-test Average of all Folds Scores ' , np.average(scores_svm_t))
+print('||----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------||')
+
